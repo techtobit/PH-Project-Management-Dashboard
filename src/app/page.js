@@ -1,6 +1,6 @@
 
+"use client";
 import Link from 'next/link';
-
 
 
 const Page = () => {
@@ -14,6 +14,7 @@ const Page = () => {
       Dashboard
       </Link>
     </div>
+
   );
 };
 
