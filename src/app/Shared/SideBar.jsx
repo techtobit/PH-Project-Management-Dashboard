@@ -3,7 +3,7 @@ import Link from 'next/link';
 // import { useNavigate } from 'react-router-dom';
 import React, {useState} from 'react';
 import ProjectList from '../Dashboard/ProjectList'
-import { ProductOutlined, UserOutlined, PicLeftOutlined, AudioOutlined, FullscreenOutlined  } from '@ant-design/icons';
+import { ProductOutlined, UserOutlined, PicLeftOutlined, AudioOutlined, FullscreenOutlined,BoxPlotOutlined  } from '@ant-design/icons';
 import { Layout, Menu, theme, Input, Space } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
@@ -20,6 +20,11 @@ const SideBar=()=> {
       key: 'projects',
       icon: <PicLeftOutlined />,
       label: 'Projects',
+    },
+    {
+      key: 'board',
+      icon: <BoxPlotOutlined />,
+      label: 'Board',
     },
   ];
   

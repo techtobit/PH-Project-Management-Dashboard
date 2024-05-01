@@ -2,6 +2,7 @@
 import React,{useState} from 'react';
 import { useClient } from 'next/client';
 import { Button, Checkbox, Form, Input } from 'antd';
+import {UserOutlined, LockOutlined} from '@ant-design/icons';
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -19,17 +20,18 @@ const Login = () => {
 
 
   return (
-    <div >
+    <div className='h-screen w-full flex items-center justify-center' >
       <Form
+      className=''
         name="basic"
         labelCol={{
-          span: 8,
+          // span: 16,
         }}
         wrapperCol={{
-          span: 16,
+          // span: 16,
         }}
         style={{
-          maxWidth: 600,
+          maxWidth: 600
         }}
         initialValues={{
           remember: true,
@@ -37,21 +39,22 @@ const Login = () => {
         onFinish={handleSubmit}
         autoComplete="off"
       >
-        <Form.Item
-          label="Username"
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: 'Please input your username!',
-            },
-          ]}
-        >
-          <Input />
-        </Form.Item>
+
+<Form.Item className="w-[300px]"
+        name="email"
+        rules={[
+          {
+            required: true,
+            message: 'Please input your Username/email!',
+          },
+        ]}
+      >
+      <label>Email <span className='text-red-500'>*</span></label>
+        <Input prefix={<UserOutlined className="site-form-item-icon w-[300px]" />} placeholder="Email" />
+      </Form.Item>
+
 
         <Form.Item
-          label="Password"
           name="password"
           rules={[
             {
@@ -60,14 +63,19 @@ const Login = () => {
             },
           ]}
         >
-          <Input.Password />
+        <label>Password <span className='text-red-500'>*</span></label>
+        <Input
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          placeholder="Password"
+        />
         </Form.Item>
+
 
         <Form.Item
           name="remember"
           valuePropName="checked"
           wrapperCol={{
-            offset: 8,
             span: 16,
           }}
         >
@@ -76,11 +84,11 @@ const Login = () => {
 
         <Form.Item
           wrapperCol={{
-            offset: 8,
+    
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit" loading={loading}>
+          <Button className="w-[300px]" type="primary" htmlType="submit" loading={loading}>
             Submit
           </Button>
         </Form.Item>
