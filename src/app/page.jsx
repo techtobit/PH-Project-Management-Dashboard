@@ -13,6 +13,9 @@ const Page = () => {
       <Link href="/Dashboard">
       Dashboard
       </Link>
+      <Link href="/SideBar">
+      SideBar
+      </Link>
     </div>
 
   );
