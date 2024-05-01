@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { EditOutlined, DeleteOutlined, EyeOutlined } from '@ant-design/icons';
-import { Avatar, Col, Row, Card, Skeleton, Switch } from 'antd';
+import { Avatar, Col, Row, Card, Skeleton,  Flex, Spin } from 'antd';
 const { Meta } = Card;
 import axios from "axios";
 import apiSDK from '../utils/apiSDK/apiSDK'
@@ -15,12 +15,12 @@ const ProjectList = () => {
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [drawerData, setDrawerData] = useState(null);
 
-  // const url = `https://663114fbc92f351c03dc1f32.mockapi.io`
-  const url = `project.json`
+  const url = `https://663114fbc92f351c03dc1f32.mockapi.io`
+  // const url = `project.json`
   const { data, isLoading, isError } = useQuery({
     queryKey: ['Projects'],
     queryFn: async () => {
-      const response = await fetch(`${url}`);
+      const response = await fetch(`${url}/projects`);
       if (!response.ok) {
         throw new Error('Failed to fetch Project');
       }
@@ -28,6 +28,8 @@ const ProjectList = () => {
       setProjects(limitedData.slice(0, 12));
     },
   });
+
+
 
 
   const handleDrawer = (project) => {
@@ -52,7 +54,12 @@ const ProjectList = () => {
   }
 
   return (
-    <div className='flex  '>
+    <>
+        {isLoading && <div className=' h-screen flex items-center justify-center'>
+      <Spin className=' flex justify-center items-center' size="large" />
+    </div>}
+    <div className='ProjectList  '>
+
       <Row gutter={16} className='w-full flex justify-center'>
         {
           projects.map((project, index) => (
@@ -85,6 +92,7 @@ const ProjectList = () => {
         {drawerVisible && <DrawerComp drawerData={drawerData} handleDrawerClose={handleDrawerClose} onClose={() => setDrawerVisible(false)} />}
      
     </div>
+    </>
   )
 };
 

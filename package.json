@@ -17,6 +17,7 @@
     "nvm": "^0.0.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-easy-edit": "^1.17.2",
     "react-edit-text": "^5.1.1",
     "react-query": "^3.39.3",
     "zustand": "^4.5.2"

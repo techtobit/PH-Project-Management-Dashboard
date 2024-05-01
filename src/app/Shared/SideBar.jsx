@@ -3,7 +3,7 @@ import Link from 'next/link';
 // import { useNavigate } from 'react-router-dom';
 import React, {useState} from 'react';
 import ProjectList from '../Dashboard/ProjectList'
-import { UploadOutlined, UserOutlined, VideoCameraOutlined, AudioOutlined  } from '@ant-design/icons';
+import { ProductOutlined, UserOutlined, PicLeftOutlined, AudioOutlined, FullscreenOutlined  } from '@ant-design/icons';
 import { Layout, Menu, theme, Input, Space } from 'antd';
 const { Header, Content, Footer, Sider } = Layout;
 const { Search } = Input;
@@ -13,12 +13,12 @@ const SideBar=()=> {
   const items = [
     {
       key: 'dasboard', 
-      icon: <UserOutlined />,
+      icon: <ProductOutlined />,
       label: 'Home',
     },
     {
       key: 'projects',
-      icon: <VideoCameraOutlined />,
+      icon: <PicLeftOutlined />,
       label: 'Projects',
     },
   ];
@@ -44,7 +44,7 @@ const SideBar=()=> {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
   return(
-    <Layout>
+    <Layout className='h-screen'>
     <Sider
       breakpoint="lg"
       collapsedWidth="0"
@@ -56,7 +56,7 @@ const SideBar=()=> {
       }}
     >
       <div className="demo-logo-vertical" />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['home']} items={items} onClick={(event) => handleMenu(event.key)} />
+      <Menu theme="dark" mode="inline" defaultSelectedKeys={['dasboard                                                                                          ']} items={items} onClick={(event) => handleMenu(event.key)} />
     </Sider>
     <Layout>
       <Header
@@ -68,7 +68,7 @@ const SideBar=()=> {
       >
         <Search className='mx-2' placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} />
       </Header>
-      <Content
+      <Content className="overflow-y-scroll"
         style={{
           margin: '24px 16px 0',
         }}
