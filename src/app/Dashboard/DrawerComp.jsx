@@ -1,16 +1,16 @@
-
 "use client"
 import React, { useState } from 'react';
 import { Button, Drawer, Space } from 'antd';
 import { EditText } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
-const DrawerComp = ({drawerData}) => {
+const DrawerComp = ({drawerData, handleDrawerClose}) => {
   const [open, setOpen] = useState(true);
-  console.log(drawerData)
 
   const onClose = () => {
     setOpen(false);
+    handleDrawerClose();
   };
+  
   return (
     <>
       <Drawer
@@ -29,8 +29,6 @@ const DrawerComp = ({drawerData}) => {
         }
       >
         <EditText name='title' defaultValue={drawerData.project_title} />
-        <p>Some contents...</p>
-        <p>Some contents...</p>
       </Drawer>
     </>
   );

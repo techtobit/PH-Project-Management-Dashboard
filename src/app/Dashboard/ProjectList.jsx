@@ -31,10 +31,21 @@ const ProjectList = () => {
 
 
   const handleDrawer = (project) => {
-    // console.log(project)
     setDrawerData(project)
     setDrawerVisible(true);
   };
+  const handleDrawerClose = () => {
+    setDrawerVisible(false);
+  };
+
+  const handleDelete = (id) => {
+    //demo-delete method test
+    axios.delete(`${url}/projects/${id}`)
+    .then(res => {  
+      console.log(res);  
+      console.log(res.data); })
+    console.log(id)
+  }
 
   const onChange = (checked) => {
     setLoading(!checked);
@@ -54,7 +65,7 @@ const ProjectList = () => {
                 actions={[
                   <EyeOutlined key="view" />,
                   <EditOutlined onClick={() => handleDrawer(project)} key="edit" />,
-                  // <DeleteOutlined onClick={handleDelete(project.id)} key="delete" />,
+                  <DeleteOutlined onClick={()=>handleDelete(project.id)} key="delete" />,
                 ]}
               >
                 <Skeleton loading={isLoading} active>
@@ -70,8 +81,8 @@ const ProjectList = () => {
           ))
           
         }
-        {drawerVisible && <DrawerComp drawerData={drawerData} onClose={() => setDrawerVisible(false)} />}
       </Row>
+        {drawerVisible && <DrawerComp drawerData={drawerData} handleDrawerClose={handleDrawerClose} onClose={() => setDrawerVisible(false)} />}
      
     </div>
   )
