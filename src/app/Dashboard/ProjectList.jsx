@@ -15,12 +15,12 @@ const ProjectList = () => {
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [drawerData, setDrawerData] = useState(null);
 
-  const url = `https://663114fbc92f351c03dc1f32.mockapi.io`
-  // const url = `project.json`
+  // const url = `https://663114fbc92f351c03dc1f32.mockapi.io`
+  const url = `project.json`
   const { data, isLoading, isError } = useQuery({
     queryKey: ['Projects'],
     queryFn: async () => {
-      const response = await fetch(`${url}/projects`);
+      const response = await fetch(`${url}`);
       if (!response.ok) {
         throw new Error('Failed to fetch Project');
       }
@@ -71,8 +71,8 @@ const ProjectList = () => {
                 <Skeleton loading={isLoading} active>
                   <Meta
                     title={project.project_title}
-                    description={project.project_dis}
                   />
+                  <p className=' overflow-hidden truncate'>{project.project_dis}</p>
                   <p>{project.assing}</p>
                 </Skeleton>
               </Card>

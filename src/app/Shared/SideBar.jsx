@@ -81,7 +81,7 @@ const SideBar=()=> {
             borderRadius: borderRadiusLG,
           }}
         >
-        {/* {activeKey === 'dasboard' && <Dashboard/>} */}
+        {activeKey === 'dasboard' && <ProjectList/>}
         {activeKey === 'projects' && <ProjectList/>}
         
         

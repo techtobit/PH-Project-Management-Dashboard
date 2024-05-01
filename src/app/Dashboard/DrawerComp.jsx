@@ -5,10 +5,15 @@ import { EditText } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
 const DrawerComp = ({drawerData, handleDrawerClose}) => {
   const [open, setOpen] = useState(true);
+  const [text, setText] = useState('');
 
   const onClose = () => {
     setOpen(false);
     handleDrawerClose();
+  };
+
+  const handleSave = ({ name, value, previousValue }) => {
+    alert(name + ' saved as: ' + value + ' (prev: ' + previousValue + ')');
   };
   
   return (
@@ -28,7 +33,10 @@ const DrawerComp = ({drawerData, handleDrawerClose}) => {
           </Space>
         }
       >
-        <EditText name='title' defaultValue={drawerData.project_title} />
+        <EditText  style={{padding: '10px', fontSize: '20px'}} className='font-semibold focus:outline-none focus:border-none' name='title' 
+        onChange={(e)=>hanleChange(e, setText)}
+        onSave={handleSave}
+        defaultValue={drawerData.project_title} />
       </Drawer>
     </>
   );
