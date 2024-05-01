@@ -86,7 +86,7 @@ const DrawerComp = ({drawerData, handleDrawerClose}) => {
         onSave={handleSave}
         defaultValue={drawerData.project_title} />
 
-        <div className='w-full flex items-center gap-5'>
+        {/* <div className='w-full flex items-center gap-5'>
         <Tooltip className='flex items-center' title="Click to Edit">
         <span>Assinged :</span>
    
@@ -107,7 +107,7 @@ const DrawerComp = ({drawerData, handleDrawerClose}) => {
         onSave={handleSave}
         defaultValue={(drawerData.currentStatus)==true ? 'Complete' : "Prograssing"} />
         </Tooltip>
-        </div>
+        </div> */}
 
         
 

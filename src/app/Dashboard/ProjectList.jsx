@@ -15,14 +15,15 @@ const ProjectList = () => {
   const [loading, setLoading] = useState(false);
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [drawerData, setDrawerData] = useState(null);
-  const [viewDetails, setViewDetails] = useState(true);
+  const [viewDetails, setViewDetails] = useState(false);
+  const [projectDetails, setProjectDetails] = useState(null);
 
-  const url = `https://663114fbc92f351c03dc1f32.mockapi.io`
-  // const url = `project.json`
+  // const url = `https://663114fbc92f351c03dc1f32.mockapi.io`
+  const url = `project.json`
   const { data, isLoading, isError } = useQuery({
     queryKey: ['Projects'],
     queryFn: async () => {
-      const response = await fetch(`${url}/projects`);
+      const response = await fetch(`${url}`);
       if (!response.ok) {
         throw new Error('Failed to fetch Project');
       }
@@ -33,10 +34,10 @@ const ProjectList = () => {
 
 
 
-  const handleView = () => {
+  const handleView = (project) => {
+    setProjectDetails(project)
     setViewDetails(true)
   };
-  console.log("viewDetails", viewDetails);
 
   const handleDrawer = (project) => {
     setDrawerData(project)
@@ -87,12 +88,11 @@ const ProjectList = () => {
                         <DeleteOutlined onClick={() => handleDelete(project.id)} key="delete" />,
                       ]}
                     >
-                      <Skeleton loading={isLoading} active>
+                      <Skeleton key={index} loading={isLoading} active>
                         <Meta
                           title={project.project_title}
                         />
                         <p className=' overflow-hidden truncate'>{project.project_dis}</p>
-                        <p>{project.assing}</p>
                       </Skeleton>
                     </Card>
 
@@ -101,10 +101,10 @@ const ProjectList = () => {
 
               }
             </Row>
-            {drawerVisible && <DrawerComp drawerData={drawerData} handleDrawerClose={handleDrawerClose} onClose={() => setDrawerVisible(false)} />}
+            {/* {drawerVisible && <DrawerComp drawerData={drawerData} handleDrawerClose={handleDrawerClose} onClose={() => setDrawerVisible(false)} />} */}
           </div>
           :
-          <ProjectListDetails setViewDetails={setViewDetails} />
+          <ProjectListDetails setViewDetails={setViewDetails} projectDetails={projectDetails} isLoading={isLoading} />
       }
     </>
   )
