@@ -7,7 +7,7 @@ const Page = () => {
   return (
     <div>
       <h1>App Page</h1>
-      <Link href="/auth">
+      {/* <Link href="/auth">
         Login
       </Link>
       <Link href="/Dashboard">
@@ -15,7 +15,7 @@ const Page = () => {
       </Link>
       <Link href="/SideBar">
       SideBar
-      </Link>
+      </Link> */}
     </div>
 
   );

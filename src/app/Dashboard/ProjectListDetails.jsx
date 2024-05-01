@@ -79,7 +79,7 @@ const ProjectListDetails = ({ setViewDetails, projectDetails }) => {
           defaultValue={projectDetails.project_title} />
 
         <div className='grid lg:grid-cols-2 grid-cols-1'>
-          <p className=' font-nomarl' >Status</p>
+          <p className=' font-nomarl' >Assinged Memeber</p>
           <Select className='lg:w-[220px]  w-[190px] '
             name=''
             onChange={handleChange}
@@ -98,15 +98,14 @@ const ProjectListDetails = ({ setViewDetails, projectDetails }) => {
           <p className=' font-nomarl' >Assinged Team</p>
           <Select className='lg:w-[220px]  w-[190px] '
             onChange={handleChange}
-            value={''}
             options={getTeamOptions()}
           />
         </div>
-        {/* <Divider /> */}
+
         <p className=' font-nomarl ' >Task List</p>
         <Divider />
       <List
-      className="demo-loadmore-list hover:bg-gray-200 bg-gray-100"
+      className="demo-loadmore-list w-[230px] lg:w-full hover:bg-gray-200 bg-gray-100 p-[2px]"
       itemLayout="horizontal"
       dataSource={projectDetails.tasks}
       renderItem={(item, index) => (
