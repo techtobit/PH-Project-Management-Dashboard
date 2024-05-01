@@ -101,7 +101,7 @@ const ProjectList = () => {
 
               }
             </Row>
-            {/* {drawerVisible && <DrawerComp drawerData={drawerData} handleDrawerClose={handleDrawerClose} onClose={() => setDrawerVisible(false)} />} */}
+            {drawerVisible && <DrawerComp drawerData={drawerData} handleDrawerClose={handleDrawerClose} onClose={() => setDrawerVisible(false)} />}
           </div>
           :
           <ProjectListDetails setViewDetails={setViewDetails} projectDetails={projectDetails} isLoading={isLoading} />

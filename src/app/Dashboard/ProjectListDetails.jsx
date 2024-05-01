@@ -105,11 +105,9 @@ const ProjectListDetails = ({ setViewDetails, projectDetails }) => {
         {/* <Divider /> */}
         <p className=' font-nomarl ' >Task List</p>
         <Divider />
-            <List
-      className="demo-loadmore-list"
-      // loading={initLoading}
+      <List
+      className="demo-loadmore-list hover:bg-gray-200 bg-gray-100"
       itemLayout="horizontal"
-      // loadMore={loadMore}
       dataSource={projectDetails.tasks}
       renderItem={(item, index) => (
         <List.Item>
