@@ -14,5 +14,7 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@lorenzopalaia/tailwind-hero-patterns'),
+  ],
 };
