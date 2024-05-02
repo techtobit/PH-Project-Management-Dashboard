@@ -23,7 +23,7 @@ const ProjectList = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['Projects'],
     queryFn: async () => {
-      const response = await fetch(`${url}projects`);
+      const response = await fetch(`${url}/projects`);
       if (!response.ok) {
         throw new Error('Failed to fetch Project');
       }
