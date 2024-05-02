@@ -8,7 +8,15 @@ import 'react-edit-text/dist/index.css';
 const TaskDetails = ({task, setIsOpenTask}) => {
   const [text, setText] = useState()
 
-  console.log('task',task)
+  console.log('task',task.teamName)
+  const getTeamOptions = () => {
+    if (!task.team) return [];
+    const team = task.team.map((team) => ({
+      label: team.team,
+      value: team.team
+    }))
+    return team;
+  }
 
   const handleSave = ({ name, value }) => {
     const updateText = { ...text }
@@ -16,6 +24,9 @@ const TaskDetails = ({task, setIsOpenTask}) => {
     setText(updateText)
   };
 
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
   return( 
   <>
   <div className='flex gap-5 pb-5'>
@@ -27,6 +38,15 @@ const TaskDetails = ({task, setIsOpenTask}) => {
           onChange={(e) => hanleChange(e, setText)}
           onSave={handleSave}
           defaultValue={task.title} />
+
+        <div className='grid lg:grid-cols-2 grid-cols-1 items-center'>
+          <p className=' font-nomarl' >Assinged Memeber</p>
+          <EditText className='font-medium w-[120px] = truncate lg:text-[15px] text-[10px] focus:outline-none focus:border-none'
+          name='project_title'
+          onChange={(e) => hanleChange(e, setText)}
+          onSave={handleSave}
+          defaultValue={task.teamName} />
+        </div>
   </>
   )
 }
