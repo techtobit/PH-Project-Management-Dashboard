@@ -12,11 +12,11 @@ const SideBar=()=> {
   const [activeKey, setActiveKey] = useState(null)
   
   const items = [
-    {
-      key: 'dasboard', 
-      icon: <ProductOutlined />,
-      label: 'Home',
-    },
+    // {
+    //   key: 'dasboard', 
+    //   icon: <ProductOutlined />,
+    //   label: 'Home',
+    // },
     {
       key: 'projects',
       icon: <PicLeftOutlined />,
@@ -62,7 +62,7 @@ const SideBar=()=> {
       }}
     >
       <div className="demo-logo-vertical" />
-      <Menu theme="dark" mode="inline" defaultSelectedKeys={['dasboard                                                                                          ']} items={items} onClick={(event) => handleMenu(event.key)} />
+      <Menu theme="dark" mode="inline" defaultSelectedKeys={['projects                                                                                          ']} items={items} onClick={(event) => handleMenu(event.key)} />
     </Sider>
     <Layout>
       <Header
@@ -87,7 +87,7 @@ const SideBar=()=> {
             borderRadius: borderRadiusLG,
           }}
         >
-        {activeKey === 'dasboard' && <ProjectList/>}
+        {/* {activeKey === 'dasboard' && <ProjectList/>} */}
         {activeKey === 'projects' && <ProjectList/>}
         
         

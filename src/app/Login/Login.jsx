@@ -9,9 +9,9 @@ const Login = () => {
   const handleSubmit = async (values) => {
     setLoading(true);
     try {
-      console.log('Login successful!', values);
+      console.log('Singin successful!', values);
     } catch (error) {
-      console.error('Login failed!', error);
+      console.error('Singin failed!', error);
     } finally {
       setLoading(false);
     }
