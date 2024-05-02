@@ -4,8 +4,13 @@ import { Card, Button, Tooltip, Select,Avatar, Space, Skeleton,Divider, List } f
 const { Meta } = Card;
 import { EditText } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
+import TaskDetails from './TaskDetails'
 const ProjectListDetails = ({ setViewDetails, projectDetails }) => {
+
   const [text, setText] = useState()
+  const [isOpenTask, setIsOpenTask] = useState(false)
+  const [task , setTask] = useState()
+
   console.log('projectDetails', projectDetails)
   const getTeamOptions = () => {
     if (!projectDetails.team) return [];
@@ -55,9 +60,12 @@ const ProjectListDetails = ({ setViewDetails, projectDetails }) => {
     setText(updateText)
   };
 
-//  cost checkAssingedMamber = () =>{
+ const handelOpenTask = (task) =>{
+  setTask(task)
+  setIsOpenTask(true)
+ }
 
-//  }
+ console.log(task)
 
   return (
     <>
@@ -67,6 +75,10 @@ const ProjectListDetails = ({ setViewDetails, projectDetails }) => {
           marginTop: 16,
         }}
       >
+      {
+        !(isOpenTask) ? 
+      <>
+
         <div className='flex gap-5 pb-5'>
           <Button type='primary' onClick={() => setViewDetails(false)} >Save</Button>
           <Button onClick={() => setViewDetails(false)} >Cancel</Button>
@@ -105,11 +117,14 @@ const ProjectListDetails = ({ setViewDetails, projectDetails }) => {
         <p className=' font-nomarl ' >Task List</p>
         <Divider />
       <List
+      
       className="demo-loadmore-list w-[230px] lg:w-full hover:bg-gray-200 bg-gray-100 p-[2px]"
       itemLayout="horizontal"
       dataSource={projectDetails.tasks}
       renderItem={(item, index) => (
-        <List.Item>
+        <List.Item
+        onClick={()=> handelOpenTask(item)}
+        >
           <Skeleton avatar title={false} loading={item.loading} active>
             <List.Item.Meta
               avatar={<Avatar src={`https://api.dicebear.com/7.x/miniavs/svg?seed=${index}`} />}
@@ -126,6 +141,10 @@ const ProjectListDetails = ({ setViewDetails, projectDetails }) => {
         </List.Item>
       )}
     />
+    </>
+    :
+    <TaskDetails task={task} setIsOpenTask={setIsOpenTask}/>
+    }
       </Card>
     </>
   );
