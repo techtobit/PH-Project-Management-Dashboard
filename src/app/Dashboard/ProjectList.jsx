@@ -18,12 +18,12 @@ const ProjectList = () => {
   const [viewDetails, setViewDetails] = useState(false);
   const [projectDetails, setProjectDetails] = useState(null);
 
-  // const url = `https://663114fbc92f351c03dc1f32.mockapi.io`
-  const url = `project.json`
+  const url = `https://663114fbc92f351c03dc1f32.mockapi.io`
+  // const url = `project.json`
   const { data, isLoading, isError } = useQuery({
     queryKey: ['Projects'],
     queryFn: async () => {
-      const response = await fetch(`${url}`);
+      const response = await fetch(`${url}projects`);
       if (!response.ok) {
         throw new Error('Failed to fetch Project');
       }
