@@ -1,6 +1,5 @@
 "use client"
 import React,{useState} from 'react';
-import { useClient } from 'next/client';
 import { Button, Checkbox, Form, Input } from 'antd';
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 
