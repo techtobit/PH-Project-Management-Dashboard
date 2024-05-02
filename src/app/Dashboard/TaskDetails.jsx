@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import { Card, Button, Tooltip, Select,Avatar, Space, Skeleton,Divider, List } from 'antd';
 const { Meta } = Card;
-import { EditText } from 'react-edit-text';
+import { EditText,  EditTextarea  } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
 
 const TaskDetails = ({task, setIsOpenTask}) => {
@@ -46,6 +46,16 @@ const TaskDetails = ({task, setIsOpenTask}) => {
           onChange={(e) => hanleChange(e, setText)}
           onSave={handleSave}
           defaultValue={task.teamName} />
+        </div>
+
+        <div className='grid lg:grid-cols-2 grid-cols-1 items-center'>
+        <p className=' font-nomarl' >Discription</p>
+        <EditTextarea
+              name='discription'
+              rows={7}
+              value={task.discription}
+              style={{ fontSize: '16px' }}
+        />
         </div>
   </>
   )
